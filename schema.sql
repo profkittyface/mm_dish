@@ -53,6 +53,15 @@ CREATE TABLE IF NOT EXISTS location_key
     CONSTRAINT location_key_userid FOREIGN KEY (userid) REFERENCES users(id)
 );
 
+CREATE TABLE IF NOT EXISTS auth_key
+(
+    id serial PRIMARY KEY,
+    userid int,
+    cookie_key text,
+    expires timestamp with time zone,
+    CONSTRAINT auth_key_userid FOREIGN KEY (userid) REFERENCES users(id)
+);
+
 insert into users (username,password,email,first_name,last_name,lastip,last_login) values ('ahunt','d9251693dfcb10694f3eaf9c7c4cfafbac33104688a947a7956e647be10e8e0c','ahunt@ahunt.com','Andrew','Hunt','1.1.1.1',now());
 insert into venue (name,address,hours) values ('The Club of Phil','500 Broadway Avenue, San Francisco, CA 94103','9-5');
 insert into location (location,userid) values (st_makepoint(37.7646207,-122.4127467), 1);
