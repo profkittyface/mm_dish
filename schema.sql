@@ -62,7 +62,20 @@ CREATE TABLE IF NOT EXISTS auth_key
     CONSTRAINT auth_key_userid FOREIGN KEY (userid) REFERENCES users(id)
 );
 
+CREATE TABLE IF NOT EXISTS profile
+(
+    id serial PRIMARY KEY,
+    userid int,
+    about_me text,
+    interests text,
+    location text,
+    CONSTRAINT profile_userid FOREIGN KEY (userid) REFERENCES users(id)
+);
+
 insert into users (username,password,email,first_name,last_name,lastip,last_login) values ('ahunt','d9251693dfcb10694f3eaf9c7c4cfafbac33104688a947a7956e647be10e8e0c','ahunt@ahunt.com','Andrew','Hunt','1.1.1.1',now());
+insert into users (username,password,email,first_name,last_name,lastip,last_login) values ('jsmith','d9251693dfcb10694f3eaf9c7c4cfafbac33104688a947a7956e647be10e8e0c','jsmith@jsmith.com','John','Smith','1.1.1.1',now());
+insert into users (username,password,email,first_name,last_name,lastip,last_login) values ('crove','d9251693dfcb10694f3eaf9c7c4cfafbac33104688a947a7956e647be10e8e0c','crove@crove.com','Carl','Rove','1.1.1.1',now());
+insert into users (username,password,email,first_name,last_name,lastip,last_login) values ('twalters','d9251693dfcb10694f3eaf9c7c4cfafbac33104688a947a7956e647be10e8e0c','twalters@twalters.com','Terrance','Walters','1.1.1.1',now());
 insert into venue (name,address,hours) values ('The Club of Phil','500 Broadway Avenue, San Francisco, CA 94103','9-5');
 insert into location (location,userid) values (st_makepoint(37.7646207,-122.4127467), 1);
 insert into event (name,venueid,meeting_time,attended) values ('October Foxtrot',1,'2021-10-02 00:00:00-07','1');
